@@ -21,3 +21,10 @@ async function somePromise() {
 }
 
 somePromise().then((result) => console.log(result));
+
+async function addNumbers(a, b) {
+  let result = await a + b;
+  return result;
+}
+
+addNumbers(5, 6).then((result) => console.log(result));
