@@ -1,4 +1,5 @@
 const request = require('request');
+const axios = require('axios');
 const yargs = require('yargs');
 
 const argv = yargs
@@ -16,9 +17,15 @@ const argv = yargs
 
 console.log(argv);
 
-request.get(
-  `http://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(argv._[0])}`,
-  { json: true },
-  (err, response, body) => {
-    console.log(JSON.stringify(body, null, 2));
-  });
+axios.get(`http://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(argv._[0])}`)
+  .then((response) => {
+    console.log(response.data);
+  }
+);
+
+// request.get(
+//   `http://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(argv._[0])}`,
+//   { json: true },
+//   (err, response, body) => {
+//     console.log(JSON.stringify(body, null, 2));
+//   });
